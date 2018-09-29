@@ -8,26 +8,26 @@ import menus.help
 
 class DrafterMainFrame(wx.Frame):
   """
-  
+
   """
-  
+
   def __init__(self, *args, **kwargs):
     super(DrafterMainFrame, self).__init__(*args, **kwargs)
-    
+
     self.__InitMenuBar()
-    
-    
-  
+
   def __InitMenuBar(self):
-    menu_bar = wx.MenuBar()
+    menuBar = wx.MenuBar()
+
+    menuBar.Append(menus.file.FileMenu(), "&File")
+    menuBar.Append(menus.edit.EditMenu(), "&Edit")
+    menuBar.Append(menus.format.FormatMenu(), "For&mat")
+    menuBar.Append(menus.settings.SettingsMenu(), "Se&ttings")
+    menuBar.Append(menus.help.HelpMenu(), "&Help")
     
-    menu_bar.Append(menus.file.FileMenu(), "&File")
-    menu_bar.Append(menus.edit.EditMenu(), "&Edit")
-    menu_bar.Append(menus.format.FormatMenu(), "For&mat")
-    menu_bar.Append(menus.settings.SettingsMenu(), "Se&ttings")
-    menu_bar.Append(menus.help.HelpMenu(), "&Help")
-    
-    self.SetMenuBar(menu_bar)
+    self.Bind(wx.EVT_MENU, menus.file.OnQuit, menuBar.GetMenu(menuBar.FindMenu("File")).FindItemById(wx.ID_EXIT))
+
+    self.SetMenuBar(menuBar)
 
 
 if __name__ == "__main__":
