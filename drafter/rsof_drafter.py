@@ -1,10 +1,6 @@
 import wx
 
-import menus.file
-import menus.edit
-import menus.format
-import menus.settings
-import menus.help
+import menu_generators as menugen
 
 class DrafterMainFrame(wx.Frame):
   """
@@ -13,21 +9,35 @@ class DrafterMainFrame(wx.Frame):
 
   def __init__(self, *args, **kwargs):
     super(DrafterMainFrame, self).__init__(*args, **kwargs)
-
+    
+    self.__menuInfoFile = None
+    self.__menuInfoEdit = None
+    self.__menuInfoFormat = None
+    self.__menuInfoSettings = None
+    self.__menuInfoHelp = None
     self.__InitMenuBar()
 
   def __InitMenuBar(self):
     menuBar = wx.MenuBar()
-
-    menuBar.Append(menus.file.FileMenu(), "&File")
-    menuBar.Append(menus.edit.EditMenu(), "&Edit")
-    menuBar.Append(menus.format.FormatMenu(), "For&mat")
-    menuBar.Append(menus.settings.SettingsMenu(), "Se&ttings")
-    menuBar.Append(menus.help.HelpMenu(), "&Help")
     
-    self.Bind(wx.EVT_MENU, menus.file.OnQuit, menuBar.GetMenu(menuBar.FindMenu("File")).FindItemById(wx.ID_EXIT))
-
+    self.__menuInfoFile = menugen.GenerateFileMenu()
+    self.__menuInfoEdit = menugen.GenerateEditMenu()
+    self.__menuInfoFormat = menugen.GenerateFormatMenu()
+    self.__menuInfoSettings = menugen.GenerateSettingsMenu()
+    self.__menuInfoHelp = menugen.GenerateHelpMenu()
+    
+    menuBar.Append(self.__menuInfoFile["menu"], "&File")
+    menuBar.Append(self.__menuInfoEdit["menu"], "&Edit")
+    menuBar.Append(self.__menuInfoFormat["menu"], "For&mat")
+    menuBar.Append(self.__menuInfoSettings["menu"], "Se&ttings")
+    menuBar.Append(self.__menuInfoHelp["menu"], "&Help")
+    
+    self.Bind(wx.EVT_MENU, self.OnQuit, self.__menuInfoFile["items"][-1][0])
+    
     self.SetMenuBar(menuBar)
+  
+  def OnQuit(self, event):
+    self.Close()
 
 
 if __name__ == "__main__":
