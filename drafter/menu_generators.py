@@ -68,27 +68,27 @@ def GenerateFormatMenu():
   itemUnderline = newMenu.Append(wx.ID_UNDERLINE, "&Underline", "Underline the selected text")
   itemStrikethrough = newMenu.Append(wx.ID_STRIKETHROUGH, "&Strikethrough", "Add a line through the selcted text")
   newMenu.AppendSeparator()
-  itemLeftJustify = newMenu.Append(wx.ID_JUSTIFY_LEFT, "Align &Left", "Left-align the selected text")
-  itemCenter = newMenu.Append(wx.ID_JUSTIFY_CENTER, "Align C&entre", "Centre-align the selected text")
-  itemRightJustify = newMenu.Append(wx.ID_JUSTIFY_RIGHT, "Align &Right", "Right-align the selcted text")
+  itemAlignLeft = newMenu.Append(wx.ID_JUSTIFY_LEFT, "Align &Left", "Left-align the selected text")
+  itemAlignCenter = newMenu.Append(wx.ID_JUSTIFY_CENTER, "Align C&entre", "Centre-align the selected text")
+  itemAlignRight = newMenu.Append(wx.ID_JUSTIFY_RIGHT, "Align &Right", "Right-align the selcted text")
   newMenu.AppendSeparator()
-  itemTextColor = newMenu.Append(wx.ID_ANY, "Text &Colour", "Change the text's colour")
+  itemTextColor = newMenu.Append(wx.ID_ANY, "Text &Colour...", "Change the text's colour")
   newMenu.AppendSeparator()
-  itemLink = newMenu.Append(wx.ID_ANY, "Add Lin&k", "Add a general hyperlink")
-  itemQfc = newMenu.Append(wx.ID_ANY, "Add &Quick Find Code", "Add a forum quick find code")
+  itemLink = newMenu.Append(wx.ID_ANY, "Add Lin&k...", "Add a general hyperlink")
+  itemQfc = newMenu.Append(wx.ID_ANY, "Add &Quick Find Code...", "Add a forum quick find code")
   newMenu.AppendSeparator()
   itemSpoiler = newMenu.Append(wx.ID_ANY, "S&poiler Tag", "Enclose the selection in a spoiler tag")
   itemNoParse = newMenu.Append(wx.ID_ANY, "&No-Parse", "Ignore formatting tags in the selection")
   newMenu.AppendSeparator()
   itemEmoji = newMenu.Append(wx.ID_ANY, "Add Emo&ji", "Add an emoji or emoticon")
-  itemImgur = newMenu.Append(wx.ID_ANY, "Add Im&gur Embed", "Add an image from Imgur")
+  itemImgur = newMenu.Append(wx.ID_ANY, "Add Im&gur Embed...", "Add an image from Imgur")
   
   return {
       "menu": newMenu,
       "items": [(itemBold, itemBold.GetId()), (itemItalic, itemItalic.GetId()),
                 (itemUnderline, itemUnderline.GetId()), (itemStrikethrough, itemStrikethrough.GetId()),
-                (itemLeftJustify, itemLeftJustify.GetId()), (itemCenter, itemCenter.GetId()),
-                (itemRightJustify, itemRightJustify.GetId()), (itemTextColor, itemTextColor.GetId()),
+                (itemAlignLeft, itemAlignLeft.GetId()), (itemAlignCenter, itemAlignCenter.GetId()),
+                (itemAlignRight, itemAlignRight.GetId()), (itemTextColor, itemTextColor.GetId()),
                 (itemLink, itemLink.GetId()), (itemQfc, itemQfc.GetId()), (itemSpoiler, itemSpoiler.GetId()),
                 (itemNoParse, itemNoParse.GetId()), (itemEmoji, itemEmoji.GetId()), (itemImgur, itemImgur.GetId())]
   }
