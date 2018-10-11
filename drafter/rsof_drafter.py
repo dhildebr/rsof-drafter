@@ -200,6 +200,12 @@ if __name__ == "__main__":
   app = wx.App()
   window = DrafterMainFrame()
   panel = wx.Panel(window)
+  
+  textBox = wx.TextCtrl(panel, style = wx.TE_MULTILINE)
+  sizer = wx.BoxSizer(wx.HORIZONTAL)
+  sizer.Add(textBox, 1, wx.EXPAND, 0)
+  sizer.SetSizeHints(panel)
+  panel.SetSizer(sizer)
 
   window.Show(True)
   app.MainLoop()
