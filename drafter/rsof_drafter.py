@@ -201,9 +201,19 @@ if __name__ == "__main__":
   window = DrafterMainFrame()
   panel = wx.Panel(window)
   
-  textBox = wx.TextCtrl(panel, style = wx.TE_MULTILINE)
-  sizer = wx.BoxSizer(wx.HORIZONTAL)
-  sizer.Add(textBox, 1, wx.EXPAND, 0)
+  textBox1 = wx.TextCtrl(panel, style = wx.TE_MULTILINE | wx.TE_RICH)
+  textBox1.SetBackgroundColour(wx.Colour(0x40, 0x40, 0x40))
+  textBox1.SetForegroundColour(wx.Colour(0xDC, 0xDC, 0xDC))
+  textBox1.AppendText("Post #01")
+  
+  textBox2 = wx.TextCtrl(panel, style = wx.TE_MULTILINE | wx.TE_RICH)
+  textBox2.SetBackgroundColour(wx.Colour(0x40, 0x40, 0x40))
+  textBox2.SetForegroundColour(wx.Colour(0xDC, 0xDC, 0xDC))
+  textBox2.AppendText("Post #02")
+  
+  sizer = wx.BoxSizer(wx.VERTICAL)
+  sizer.Add(textBox1, 1, wx.EXPAND, 0)
+  sizer.Add(textBox2, 1, wx.EXPAND, 0)
   sizer.SetSizeHints(panel)
   panel.SetSizer(sizer)
 
